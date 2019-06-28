@@ -1,0 +1,2 @@
+/odoo/enterprise/addons/l10n_mx_edi/models
+/odoo/enterprise/addons/l10n_mx_edi/views
