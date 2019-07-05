@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_vehiculo_compatible_form" model="ir.ui.view">
+        <field name="name">view.vehiculo.compatible.form</field>
+        <field name="model">vehiculo.compatible</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            Vehiculos compatibles con productos
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_vehiculo_compatible_tree" model="ir.ui.view">
+        <field name="name">view.vehiculo.compatible.tree</field>
+        <field name="model">vehiculo.compatible</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" type="row" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_vehiculos_compatibles" model="ir.actions.act_window">
+        <field name="name">Vehiculos_Compatibles</field>
+        <field name="res_model">vehiculo.compatible</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="configurar_vehiculos_compatibles_menuitem"
+        name="Compatibilidad Vehículos"
+        action="action_vehiculos_compatibles"
+        parent="stock.menu_stock_inventory_control"
+        sequence="11"
+    />
+
+    <record id="add_fields_vehiculos_compatibles" model="ir.ui.view">
+      <field name="name">add.fields.vehiculos.compatibles</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_form_view"></field>
+      <field name="arch" type="xml">
+          <xpath expr="//group[@name='group_standard_price']" position="after">
+            <group string="Vehículos compatibles">
+              <div>
+                <field name="x_vehiculos_compatible"/>
+            </div>
+          </group>
+              
+          </xpath>
+      </field>
+  </record>
+</odoo>

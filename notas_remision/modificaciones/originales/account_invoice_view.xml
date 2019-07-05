@@ -6,12 +6,6 @@
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='number']" position="before">
-                    <div>
-                    <label for="number" string="Crear nota de remision" />
-                    <field name="x_solo_nota_remision" string="Solo nota de remision"/>
-                    </div>
-                </xpath>
                 <xpath expr="//sheet/group//group[last()]" position="inside">
                     <label for="l10n_mx_edi_pac_status" states="open,paid,cancel"/>
                     <div class="o_row">
