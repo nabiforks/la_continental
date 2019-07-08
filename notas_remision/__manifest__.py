@@ -27,7 +27,8 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'views/views.xml',
+        'views/nota_remision.xml',
+        'views/nota_remision_qweb.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

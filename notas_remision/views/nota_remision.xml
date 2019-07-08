@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <report 
+            string="Nota de remisión"
+            id="nota_remision_qweb"
+            model="account.invoice"
+            report_type="qweb-pdf"
+            name="notas_remision.nota_remision_view"
+            file="notas_remision.nota_remision_view"
+        />
+    </data>
+</odoo>

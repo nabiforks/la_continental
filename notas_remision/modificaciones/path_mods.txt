@@ -1,2 +1,5 @@
 /odoo/enterprise/addons/l10n_mx_edi/models
 /odoo/enterprise/addons/l10n_mx_edi/views
+
+#Consecutivo de las facturas
+/odoo/odoo-server/addons/account/models/account.py
