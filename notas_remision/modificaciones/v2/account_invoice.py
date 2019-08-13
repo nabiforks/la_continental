@@ -60,7 +60,7 @@ class AccountInvoice(models.Model):
 
     x_solo_nota_remision = fields.Boolean(
                                           string="Solo crear Nota",
-                                          default=True
+                                          default=False
                                           )
                                           
     l10n_mx_edi_pac_status = fields.Selection(
