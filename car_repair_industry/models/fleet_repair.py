@@ -13,7 +13,7 @@ class fleet_repair(models.Model):
     _description = "Car Repair"
     
     name = fields.Char(string='Subject', required=True)
-    sequence = fields.Char(string='Sequence', readonly=True ,copy =False)
+    sequence = fields.Char(string='Sequence', readonly=True ,copy =False, default="Nuevo")
     client_id = fields.Many2one('res.partner', string='Client', required=True,track_visibility='onchange')
     client_phone = fields.Char(string='Phone')
     client_mobile = fields.Char(string='Mobile')
@@ -209,9 +209,16 @@ class fleet_repair(models.Model):
     _order = 'id desc'
 
     @api.model
+    def create(self, vals):
+        if vals.get('sequence','Nuevo') == 'Nuevo':
+            sequence = self.env['ir.sequence'].next_by_code('fleet.repair')
+            vals['sequence'] = sequence
+        return super(fleet_repair, self).create(vals)
+
+    @api.model
     def default_get(self,fields):
         res = super(fleet_repair, self).default_get(fields)
-        res['sequence'] = self.env['ir.sequence'].get('fleet.repair')
+        #res['sequence'] = self.env['ir.sequence'].next_by_code('fleet.repair')
         res['receipt_date'] = datetime.now()
         return res
 
@@ -350,7 +357,7 @@ class fleet_repair_line(models.Model):
     license_plate = fields.Char('License Plate', help='License plate number of the vehicle (ie: plate number for a car)')
     vin_sn= fields.Char('Chassis Number', help='Unique number written on the vehicle motor (VIN/SN number)')
     model_id= fields.Many2one('fleet.vehicle.model', 'Model', help='Model of the vehicle')
-    fuel_type= fields.Selection([('gasoline', 'Gasoline'), ('diesel', 'Diesel'), ('electric', 'Electric'), ('hybrid', 'Hybrid')], 'Fuel Type', help='Fuel Used by the vehicle')
+    fuel_type= fields.Selection([('gasoline', 'Gasoline'),('lpg','GLP'), ('diesel', 'Diesel'), ('electric', 'Electric'), ('hybrid', 'Hybrid')], 'Fuel Type', help='Fuel Used by the vehicle')
     guarantee= fields.Selection(
             [('yes', 'Yes'), ('no', 'No')], string='Under Guarantee?')
     guarantee_type= fields.Selection(

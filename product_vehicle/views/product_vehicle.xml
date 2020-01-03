@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--Extending existing form view for Quantity per Warehouse field-->
+    <record id="product_template_form_view_inherit_warehouse_quantity" model="ir.ui.view">
+        <field name="name">product.template.common.form.warehouse.quantity</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml"> 
+            <xpath expr="//field[@name='type']" position="after">
+                  <field name="product_vehicle" />
+            </xpath> 
+        </field>
+    </record>
+
+    <record model='ir.ui.view' id='product_vehicle_tree_view'>
+        <field name='name'>product_vehicle_tree_view</field>
+        <field name='model'>product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view"/>
+        <field name='arch' type='xml'>
+            <xpath expr="//field[@name='barcode']" position="after">
+                <field name="product_vehicle"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

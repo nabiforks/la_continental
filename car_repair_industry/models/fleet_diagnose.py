@@ -23,7 +23,7 @@ class fleet_diagnose(models.Model):
     license_plate = fields.Char('License Plate', help='License plate number of the vehicle (ie: plate number for a car)')
     vin_sn = fields.Char('Chassis Number', help='Unique number written on the vehicle motor (VIN/SN number)')
     model_id = fields.Many2one('fleet.vehicle.model', 'Model', help='Model of the vehicle')
-    fuel_type = fields.Selection([('gasoline', 'Gasoline'), ('diesel', 'Diesel'), ('electric', 'Electric'), ('hybrid', 'Hybrid')], 'Fuel Type', help='Fuel Used by the vehicle')
+    fuel_type = fields.Selection([('gasoline', 'Gasoline'),('lpg','GLP'), ('diesel', 'Diesel'), ('electric', 'Electric'), ('hybrid', 'Hybrid')], 'Fuel Type', help='Fuel Used by the vehicle')
     service_type = fields.Many2one('service.type', string='Nature of Service')
     user_id = fields.Many2one('res.users', string='Technician')
     priority = fields.Selection([('0','Low'), ('1','Normal'), ('2','High')], 'Priority')

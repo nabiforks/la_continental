@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="license_plate_search_view" model="ir.ui.view">
+            <field name="name">license_plate_search_view</field>
+            <field name="model">fleet.repair</field>
+            <field name="inherit_id" ref="car_repair_industry.view_repair_order_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='sequence']" position="before">
+                    <field name="license_plate"/>
+                </xpath>                
+            </field>
+        </record>
+    </data>
+</odoo>

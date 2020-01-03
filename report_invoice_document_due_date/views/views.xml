@@ -1,0 +1,26 @@
+<odoo>
+    <template id="report_invoice_document_due_date" inherit_id="account.report_invoice_document">      
+      <xpath expr="//p[@name='payment_term']" position="replace">
+      </xpath>
+      <xpath expr="//div[@name='description']" position="replace">
+        <div class="col-auto mw-100 mb-2" t-if="o.x_ref_client" name="x_ref_client">
+            <strong>No. Referencia:</strong>
+            <p class="m-0" t-field="o.x_ref_client"/>
+        </div>
+      </xpath>
+      <xpath expr="//div[@name='due_date']" position="replace">
+      </xpath>
+    </template>
+    <record id="client_reference_form" model="ir.ui.view">
+      <field name="name">client.reference.form</field>
+      <field name="model">account.invoice</field>
+      <field name="inherit_id" ref="account.invoice_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='payment_term_id']" position="before">
+          <field name="x_ref_client"/>
+        </xpath>
+      </field>
+    </record>
+</odoo>
+
+<!-- Ruta para el campo: purchase_id.order_line.sale_order_id.client_order_ref -->

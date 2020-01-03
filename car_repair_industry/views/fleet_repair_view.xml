@@ -141,7 +141,7 @@
                     <field name="name" string="Repair Order" />
                     <field name="client_id" operator="child_of"/>
                     <field name="user_id"/>
-                    <field name="fleet_id"/>
+                    <field name="fleet_id"/>		   
                     <separator/>
                </search>
             </field>

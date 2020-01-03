@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>        
+        <record id="AddCampos_inventario_lista_odoo" model="ir.ui.view">
+            <field name="name">AddCampos.inventario.lista.odoo.view</field>
+            <field name="model">product.template</field>           
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="arch" type="xml">
+                    <xpath expr="//field[@name='name']" position="before">                         
+                        <field name="brand_id" string='Marca'/>    
+                        <field name="compatibleV" string='Vehiculo compatible'/>  
+                  <!--       <field name="campatible" string='Vehiculo compatible'/>    -->
+                    </xpath>
+            </field>
+        </record>          
+    </data>
+</odoo>
